@@ -1,0 +1,8 @@
+[Unit]
+Description=SERVICE3
+
+[Service]
+ExecStart=/usr/bin/service_3
+
+[Install]
+WantedBy=multi-user.target
