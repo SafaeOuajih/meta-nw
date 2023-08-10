@@ -1,41 +1,21 @@
-This README file contains information on the contents of the meta-nw layer.
+Service 1: Sensor Data Producer
+	   The service generates a random temperature value
+	   and write it to a shared memory every 2s.
 
-Please see the corresponding sections below for details.
+Service 2: Data Processor
+	   This service gets the temperature values from the
+	   shared memory and shows the average of the past temperature values (iterations defined by StatIter).
 
-Dependencies
-============
-
-  URI: <first dependency>
-  branch: <branch name>
-
-  URI: <second dependency>
-  branch: <branch name>
-
-  .
-  .
-  .
-
-Patches
-=======
-
-Please submit any patches against the meta-nw layer to the xxxx mailing list (xxxx@zzzz.org)
-and cc: the maintainer:
-
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
-
-Table of Contents
-=================
-
-  I. Adding the meta-nw layer to your build
- II. Misc
+Service 3: Alert Manager
+	   This service gets the temperature values from the
+	   shared memory and shows an alert when the temperature value is above a Limit value.
 
 
-I. Adding the meta-nw layer to your build
-=================================================
+- Start the services using
 
-Run 'bitbake-layers add-layer meta-nw'
+	$ systemctl start servicep
+	$ systemctl start servicec
+	$ systemctl start servicea
 
-II. Misc
-========
-
---- replace with specific information about the meta-nw layer ---
+- Check services syslogs using
+	$ tail -F /var/log/message
